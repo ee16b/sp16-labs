@@ -59,10 +59,10 @@ float right_cur_pwm = (HIGH_PWM + LOW_PWM)/2;
 /*---------------*/
 
 // Control vector
-float alpha1_left = // YOUR CODE HERE
-float alpha2_left = // YOUR CODE HERE
-float alpha1_right = // YOUR CODE HERE
-float alpha2_right = // YOUR CODE HERE
+float F1_left = // YOUR CODE HERE
+float F2_left = // YOUR CODE HERE
+float F1_right = // YOUR CODE HERE
+float F2_right = // YOUR CODE HERE
 
 /*----------------------*/
 /* END OF CODE BLOCK A3 */
