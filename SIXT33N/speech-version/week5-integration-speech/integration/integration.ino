@@ -128,6 +128,24 @@ int drive_count = 0;
 // returns snippet of interest (containing speech)
 bool envelope(int*, float*);
 
+// Compute the L2 norm of (dim1, dim2) and centroid
+// input: dim1: 1st dimension coordinate
+//        dim2: 2nd dimension coordinate
+//        centroid: size-2 array containing centroid coordinates
+// output: L2 norm (Euclidean distance) between point and centroid
+float l2_norm(float dim1, float dim2, float* centroid){
+  return sqrt(pow(dim1-centroid[0],2) + pow(dim2-centroid[1],2));
+}
+
+// Compute the L2 norm of (dim1, dim2, dim3) and centroid
+// input: dim1: 1st dimension coordinate
+//        dim2: 2nd dimension coordinate
+//        dim3: 3rd dimension coordinate
+//        centroid: size-3 array containing centroid coordinates
+// output: L2 norm (Euclidean distance) between point and centroid
+float l2_norm3(float dim1, float dim2, float dim3, float* centroid){
+  return sqrt(pow(dim1-centroid[0],2) + pow(dim2-centroid[1],2) + pow(dim3-centroid[2],2));
+}
 
 void setup()
 {  

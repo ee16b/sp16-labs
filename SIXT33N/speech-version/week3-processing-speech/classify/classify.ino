@@ -79,7 +79,7 @@ float l2_norm(float dim1, float dim2, float* centroid){
 //        centroid: size-3 array containing centroid coordinates
 // output: L2 norm (Euclidean distance) between point and centroid
 float l2_norm3(float dim1, float dim2, float dim3, float* centroid){
-  return sqrt(pow(dim1-centroid[0],2) + pow(dim2-centroid[1],2), pow(dim3-centroid[2],2));
+  return sqrt(pow(dim1-centroid[0],2) + pow(dim2-centroid[1],2) + pow(dim3-centroid[2],2));
 }
 
 
