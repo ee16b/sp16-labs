@@ -37,7 +37,7 @@ int32_t right_history = 0;
 int right_num_ticks = 0;
 int right_pointer = 0;
 
-long temp = 0;
+long tempr, templ = 0;
 float left_cur_pwm = (HIGH_PWM + LOW_PWM)/2;
 float right_cur_pwm = (HIGH_PWM + LOW_PWM)/2;
 
@@ -182,24 +182,28 @@ void input_right(float in){
 #pragma vector=PORT2_VECTOR
 __interrupt void Port_2(void)
 {
-  temp = millis();
-  left_history += temp - left_last_time;
-  left_last_time = temp;
-  left_position += 1; //cm
-  left_num_ticks += 1;
-  P2IFG &= ~BIT5; // P2.5 IFG cleared
+  if (P2IFG & BIT5){
+    templ = millis();
+    left_history += templ - left_last_time;
+    left_last_time = templ;
+    left_position += 1; //cm
+    left_num_ticks += 1;
+    P2IFG &= ~BIT5; // P2.5 IFG cleared
+  }
 }
 
 // Port 1 ISR for right encoder
 #pragma vector=PORT1_VECTOR
 __interrupt void Port_1(void)
 {
-  temp = millis();
-  right_history += temp - right_last_time;
-  right_last_time = temp;
-  right_position += 1; //cm
-  right_num_ticks += 1;
-  P1IFG &= ~BIT2; // P1.2 IFG cleared
+  if (P1IFG & BIT2){
+    tempr = millis();
+    right_history += tempr - right_last_time;
+    right_last_time = tempr;
+    right_position += 1; //cm
+    right_num_ticks += 1;
+    P1IFG &= ~BIT2; 
+  }
 }
 
 // Set timer for timestep; use A2 since A0 & A1 are used by PWM
